@@ -15,6 +15,14 @@ const images = [
 ];
 
 
+const Collections = [
+  {id: '1', src: require('../assets/homeshoe1.png')},
+  {id: '2', src: require('../assets/homeshoe1.png')},
+  {id: '3', src: require('../assets/homeshoe1.png')},
+];
+
+
+
 const Home = () => {
   const flatListRef = useRef<FlatList<any>>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
