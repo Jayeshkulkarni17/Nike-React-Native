@@ -1,10 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View,Image,ScrollView, FlatList, Animated, ViewToken, Dimensions } from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Image,
+  ScrollView,
+  FlatList,
+  Animated,
+  ViewToken,
+  Dimensions,
+} from 'react-native';
 import Header from '../components/header';
 import LinearGradient from 'react-native-linear-gradient';
 import TextTicker from 'react-native-text-ticker';
 import Footer from '../components/footer';
-// import { Shadow } from 'react-native-shadow-2';
 
 const {width: screenWidth} = Dimensions.get('window');
 
@@ -14,14 +24,11 @@ const images = [
   {id: '3', src: require('../assets/homeshoe1.png')},
 ];
 
-
-const Collections = [
-  {id: '1', src: require('../assets/homeshoe1.png')},
-  {id: '2', src: require('../assets/homeshoe1.png')},
-  {id: '3', src: require('../assets/homeshoe1.png')},
+const collections = [
+  {id: '1', src: require('../assets/c3.png')},
+  {id: '2', src: require('../assets/c2.png')},
+  {id: '3', src: require('../assets/c1.png')},
 ];
-
-
 
 const Home = () => {
   const flatListRef = useRef<FlatList<any>>(null);
@@ -77,42 +84,41 @@ const Home = () => {
     <View style={styles.container}>
       <LinearGradient
         colors={['#FFFFFF', '#ECE2D1']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-        style={styles.gradient}
-      >
+        start={{x: 0, y: 0}}
+        end={{x: 0, y: 1}}
+        style={styles.gradient}>
         <Header />
         <ScrollView>
-        <View style={styles.typeContainer}>
-          <TouchableOpacity>
-            <Text style={styles.typetext}>Men</Text>
-          </TouchableOpacity>
-          <View style={styles.line} />
-          <TouchableOpacity>
-            <Text style={styles.typetext}>Women</Text>
-          </TouchableOpacity>
-          <View style={styles.line} />
-          <TouchableOpacity>
-            <Text style={styles.typetext}>Kids</Text>
-          </TouchableOpacity>
-        </View>
+          <View style={styles.typeContainer}>
+            <TouchableOpacity>
+              <Text style={styles.typetext}>Men</Text>
+            </TouchableOpacity>
+            <View style={styles.line} />
+            <TouchableOpacity>
+              <Text style={styles.typetext}>Women</Text>
+            </TouchableOpacity>
+            <View style={styles.line} />
+            <TouchableOpacity>
+              <Text style={styles.typetext}>Kids</Text>
+            </TouchableOpacity>
+          </View>
 
-        <View style={styles.movingtext}>
-          <TextTicker
-            style={styles.marqueeText}
-            duration={30000}
-            loop
-            bounce
-            shouldAnimateTreshold={40}
-            repeatSpacer={0}
-            marqueeDelay={1000}
-          >
-            Limited collections.Early access.Limited collections.Early access.Limited collections.
-          </TextTicker>
-        </View>
+          <View style={styles.movingtext}>
+            <TextTicker
+              style={styles.marqueeText}
+              duration={30000}
+              loop
+              bounce
+              shouldAnimateTreshold={40}
+              repeatSpacer={0}
+              marqueeDelay={1000}>
+              Limited collections.Early access.Limited collections.Early
+              access.Limited collections.
+            </TextTicker>
+          </View>
 
-        <View>
-        <FlatList
+          <View>
+            <FlatList
               ref={flatListRef}
               data={images}
               keyExtractor={item => item.id}
@@ -133,36 +139,31 @@ const Home = () => {
                 <Animated.View key={item.id} style={getDotStyle(index)} />
               ))}
             </View>
+          </View>
+
+          <View style={styles.cardBox}></View>
+
+          <View style={styles.text}>
+            <Text
+              style={{
+                color: '#003149',
+                fontSize: 22,
+                fontWeight: '900',
+                fontFamily: 'Gilroy-Bold',
+              }}>
+              Famous Collections
+            </Text>
+          </View>
+
+          <View style={styles.gridbox}>
+      {collections.map((item) => (
+        <View key={item.id} style={styles.imageContainer}>
+          <Image source={item.src} style={styles.imageC} />
         </View>
-
-        <View style={styles.cardBox}>
-
-        </View>
-
-        <View style={styles.text}>
-          <Text style={{color:'#003149',fontSize:22,fontWeight:'900',fontFamily:'Gilroy-Bold'}}>Famous Collections</Text>
-        </View>
-
-        {/* <Shadow distance={15} startColor={'#eb9066d8'} endColor={'#ff00ff10'} offset={[3, 4]}>
-  <View style={{ borderTopStartRadius: 24, borderBottomEndRadius: 0, borderRadius: 10, backgroundColor: '#c454f0dd' }}>
-    <Text style={{ margin: 20, fontSize: 20 }}>🤯</Text>
-  </View>
-</Shadow> */}
-
-        <View style={styles.gridbox}>
-
-        </View>
-
-        {/* <View style={styles.footerText}>
-          <Text>Live</Text>
-
-
-        </View> */}
-
-
-
+      ))}
+    </View>
         </ScrollView>
-        <Footer/>
+        <Footer />
       </LinearGradient>
     </View>
   );
@@ -201,18 +202,18 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   marqueeText: {
-    top:5,
+    top: 5,
     fontSize: 20,
     color: 'red',
-    fontWeight:'600',
-    fontFamily:'Gilroy-Bold'
+    fontWeight: '600',
+    fontFamily: 'Gilroy-Bold',
   },
   imagesContainer: {
     // flexGrow: 1,
     // justifyContent:'center'
   },
   imageWrapper: {
-    width: screenWidth ,
+    width: screenWidth,
     justifyContent: 'center',
   },
   image: {
@@ -227,18 +228,34 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
-  cardBox:{
-    width:'100%',
-    height:180,
-    backgroundColor:'#000000'
+  cardBox: {
+    width: '100%',
+    height: 180,
+    backgroundColor: '#000000',
   },
-  text:{
-    paddingHorizontal:20,
-    top:20
+  text: {
+    paddingHorizontal: 20,
+    marginTop: 10,
   },
-  gridbox:{
-
-  }
+  gridbox: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    padding: 10,
+    alignItems:'center',
+    paddingBottom:160,
+  },
+  imageContainer: {
+    alignItems:'center',
+    justifyContent:'center',
+    borderRadius: 15,
+    backgroundColor: '#fff',
+    padding: 10,
+    marginHorizontal:10
+  },
+  imageC: {
+    width: 80,
+    height: 80, 
+  },
 });
 
 export default Home;
