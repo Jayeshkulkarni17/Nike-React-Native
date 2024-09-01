@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {StyleSheet, Text} from 'react-native';
 import Octicons from 'react-native-vector-icons/Octicons';
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     width: '100%',
     height: 90,
-    top: 705,
+    top: 715,
     backgroundColor: '#FFFFFF',
     borderRadius: 30,
     flex: 1,

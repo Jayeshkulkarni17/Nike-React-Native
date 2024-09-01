@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     height: 25,
   },
   iconContainer: {
-    left:150,
+    left:190,
     width: 50,
     height: 50,
     backgroundColor: '#EFEFEF',

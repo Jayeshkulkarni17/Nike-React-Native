@@ -25,7 +25,7 @@ const images = [
 ];
 
 const collections = [
-  {id: '1', src: require('../assets/c3.png')},
+  {id: '1', src: require('../assets/Nike3.png')},
   {id: '2', src: require('../assets/c2.png')},
   {id: '3', src: require('../assets/c1.png')},
 ];
@@ -156,12 +156,18 @@ const Home = () => {
           </View>
 
           <View style={styles.gridbox}>
-      {collections.map((item) => (
-        <View key={item.id} style={styles.imageContainer}>
-          <Image source={item.src} style={styles.imageC} />
-        </View>
-      ))}
-    </View>
+            {collections.map(item => (
+              <LinearGradient
+              colors={['#4dffef','#e4fffa','#59cdff']}
+            start={{x: 0, y: 1}} end={{x: 1, y: 1}}
+              key={item.id}
+              style={styles.gradientgrid}>
+              <View  style={styles.imageContainer}>
+                <Image source={item.src} style={styles.imageC} />
+              </View>
+              </LinearGradient>
+            ))}
+          </View>
         </ScrollView>
         <Footer />
       </LinearGradient>
@@ -239,22 +245,29 @@ const styles = StyleSheet.create({
   },
   gridbox: {
     flexDirection: 'row',
+    marginTop:10,
     justifyContent: 'center',
     padding: 10,
-    alignItems:'center',
-    paddingBottom:160,
+    alignItems: 'center',
+    paddingBottom: 160,
+  },
+  gradientgrid:{
+    padding:2,
+    borderRadius:16,
+    marginHorizontal: 10,
   },
   imageContainer: {
-    alignItems:'center',
-    justifyContent:'center',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     borderRadius: 15,
     backgroundColor: '#fff',
     padding: 10,
-    marginHorizontal:10
+    left:0
   },
   imageC: {
-    width: 80,
-    height: 80, 
+    width: 90,
+    height: 90,
+    right:10
   },
 });
 
