@@ -30,6 +30,37 @@ const collections = [
   {id: '3', src: require('../assets/c1.png')},
 ];
 
+const slider = [
+  {
+    id: '1',
+    price: '$80,000',
+    name: 'Nike SB Dunk',
+    name2:'Low Pro "Paris"',
+    src: require('../assets/Nike3.png'),
+  },
+  {
+    id: '2',
+    price: '$80,000',
+    name: 'Nike SB Dunk',
+    name2:'Low Pro "Friends & Family"',
+    src: require('../assets/c2.png'),
+  },
+  {
+    id: '3',
+    price: '$80,000',
+    name: 'Nike SB Dunk',
+    name2:'Low Pro "Paris"',
+    src: require('../assets/c1.png'),
+  },
+  {
+    id: '4',
+    price: '$80,000',
+    name: 'Nike SB Dunk',
+    name2:'Low Pro "Paris"',
+    src: require('../assets/c3.png'),
+  },
+];
+
 const Home = () => {
   const flatListRef = useRef<FlatList<any>>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -141,7 +172,72 @@ const Home = () => {
             </View>
           </View>
 
-          <View style={styles.cardBox}></View>
+          <View style={styles.scontainer}>
+            <View style={styles.ttext}>
+            <Text
+              style={{
+                color: '#FFFFFF',
+                fontSize: 24,
+                fontWeight: 'bold',
+                marginHorizontal:48,
+              }}>
+              Top
+            </Text>
+            <Text style={{
+                color: '#FFFFFF',
+                fontSize: 24,
+                fontWeight: 'bold',
+                marginHorizontal:20
+              }}>Products</Text>
+            </View>
+
+            <ScrollView style={styles.slider}
+            horizontal
+            showsHorizontalScrollIndicator={false}>
+              {slider.map(item => (
+                <View key={item.id} style={styles.sliderContainer}>
+                  <Image source={item.src} style={styles.imageC} />
+                  <Text>{item.name}</Text>
+                  <Text>{item.name2}</Text>
+                  <Text style={{}}>{item.price}</Text>
+                  <TouchableOpacity>
+                    <Text>Add To Cart</Text>
+                  </TouchableOpacity>
+                </View>
+              ))}
+            </ScrollView>
+
+          </View>
+
+
+          {/* <View style={styles.stext}>
+            <Text
+              style={{
+                color: '#FFFFFF',
+                fontSize: 24,
+                fontWeight: 'bold',
+                left:20
+              }}>
+              Top
+            </Text>
+            <Text style={styles.middle}>Products</Text>
+            </View> */}
+
+          {/* <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              style={styles.sliderContainer}>
+              {slider.map(item => (
+                <View key={item.id} style={styles.card}>
+                  <Image source={item.src} style={styles.simage} />
+                  <Text style={styles.price}>{item.price}</Text>
+                  <Text style={styles.name}>{item.name}</Text>
+                  <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonText}>Add to Cart</Text>
+                  </TouchableOpacity>
+                </View>
+              ))}
+            </ScrollView> */}
 
           <View style={styles.text}>
             <Text
@@ -157,16 +253,34 @@ const Home = () => {
 
           <View style={styles.gridbox}>
             {collections.map(item => (
-              <LinearGradient
-              colors={['#4dffef','#e4fffa','#59cdff']}
-            start={{x: 0, y: 1}} end={{x: 1, y: 1}}
-              key={item.id}
-              style={styles.gradientgrid}>
-              <View  style={styles.imageContainer}>
-                <Image source={item.src} style={styles.imageC} />
-              </View>
-              </LinearGradient>
+              <TouchableOpacity key={item.id}>
+                <LinearGradient
+                  colors={['#4dffef', '#e4fffa', '#59cdff']}
+                  start={{x: 0, y: 1}}
+                  end={{x: 1, y: 1}}
+                  key={item.id}
+                  style={styles.gradientgrid}>
+                  <View style={styles.imageContainer}>
+                    <Image source={item.src} style={styles.imageC} />
+                  </View>
+                </LinearGradient>
+              </TouchableOpacity>
             ))}
+          </View>
+
+          <View style={styles.bottomText}>
+            <Text style={styles.bText}>Just</Text>
+            <Text style={styles.bText}>Do It.</Text>
+            <Text
+              style={{
+                color: '#9E9E9E',
+                fontSize: 35,
+                fontFamily: 'Gilroy-Regular',
+                fontWeight: '600',
+                marginTop: 8,
+              }}>
+              Crafted with ❤️
+            </Text>
           </View>
         </ScrollView>
         <Footer />
@@ -234,10 +348,35 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
-  cardBox: {
-    width: '100%',
-    height: 180,
+  scontainer: {
     backgroundColor: '#000000',
+    width:'100%',
+    height:240,
+    flexDirection:'row',
+  },
+  ttext:{
+    zIndex:10,
+    backgroundColor:'#000000',
+    width:'33%',
+    height:240,
+    alignItems:'center',
+    justifyContent:'center',
+  },
+  slider:{
+    zIndex:2,
+    backgroundColor:'black',
+    height:230,
+  },
+  sliderContainer:{
+    justifyContent:'center',
+    alignItems:'center',
+    width:'22%',
+    backgroundColor:'white',
+    marginBottom:10,
+    marginTop:18,
+    marginLeft:15,
+    borderRadius:15,
+    padding:10,
   },
   text: {
     paddingHorizontal: 20,
@@ -245,15 +384,14 @@ const styles = StyleSheet.create({
   },
   gridbox: {
     flexDirection: 'row',
-    marginTop:10,
+    marginTop: 10,
     justifyContent: 'center',
     padding: 10,
     alignItems: 'center',
-    paddingBottom: 160,
   },
-  gradientgrid:{
-    padding:2,
-    borderRadius:16,
+  gradientgrid: {
+    padding: 2,
+    borderRadius: 16,
     marginHorizontal: 10,
   },
   imageContainer: {
@@ -262,12 +400,24 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     backgroundColor: '#fff',
     padding: 10,
-    left:0
+    left: 0,
   },
   imageC: {
     width: 90,
     height: 90,
-    right:10
+    right: 10,
+  },
+  bottomText: {
+    marginTop: 5,
+    marginBottom: 100,
+    paddingHorizontal: 20,
+  },
+  bText: {
+    color: '#9E9E9E',
+    fontSize: 50,
+    fontFamily: 'Gilroy-Bold',
+    fontWeight: '900',
+    marginVertical: 5,
   },
 });
 

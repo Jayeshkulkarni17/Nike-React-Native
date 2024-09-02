@@ -63,13 +63,14 @@ const styles = StyleSheet.create({
     zIndex: 1,
     width: '100%',
     height: 90,
-    top: 715,
+    top: 720,
     backgroundColor: '#FFFFFF',
     borderRadius: 30,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  
   foot: {},
   iconContainer: {
     flexDirection: 'row',
