@@ -34,29 +34,25 @@ const slider = [
   {
     id: '1',
     price: '$80,000',
-    name: 'Nike SB Dunk',
-    name2:'Low Pro "Paris"',
+    name: 'Nike SB Dunk Low Pro "Paris"',
     src: require('../assets/Nike3.png'),
   },
   {
     id: '2',
     price: '$80,000',
-    name: 'Nike SB Dunk',
-    name2:'Low Pro "Friends & Family"',
+    name: 'Nike SB Dunk Low Pro"Friends & Family"',
     src: require('../assets/c2.png'),
   },
   {
     id: '3',
     price: '$80,000',
-    name: 'Nike SB Dunk',
-    name2:'Low Pro "Paris"',
+    name: 'Nike SB Dunk Low Pro "Paris"',
     src: require('../assets/c1.png'),
   },
   {
     id: '4',
     price: '$80,000',
-    name: 'Nike SB Dunk',
-    name2:'Low Pro "Paris"',
+    name: 'Nike SB Dunk Low Pro "Paris"',
     src: require('../assets/c3.png'),
   },
 ];
@@ -174,70 +170,45 @@ const Home = () => {
 
           <View style={styles.scontainer}>
             <View style={styles.ttext}>
-            <Text
-              style={{
-                color: '#FFFFFF',
-                fontSize: 24,
-                fontWeight: 'bold',
-                marginHorizontal:48,
-              }}>
-              Top
-            </Text>
-            <Text style={{
-                color: '#FFFFFF',
-                fontSize: 24,
-                fontWeight: 'bold',
-                marginHorizontal:20
-              }}>Products</Text>
+              <Text
+                style={{
+                  color: '#FFFFFF',
+                  fontSize: 24,
+                  fontWeight: 'bold',
+                  marginHorizontal: 48,
+                }}>
+                Top
+              </Text>
+              <Text
+                style={{
+                  color: '#FFFFFF',
+                  fontSize: 24,
+                  fontWeight: 'bold',
+                  marginHorizontal: 20,
+                }}>
+                Products
+              </Text>
             </View>
 
-            <ScrollView style={styles.slider}
-            horizontal
-            showsHorizontalScrollIndicator={false}>
+            <ScrollView
+              style={styles.slider}
+              horizontal
+              showsHorizontalScrollIndicator={false}>
               {slider.map(item => (
                 <View key={item.id} style={styles.sliderContainer}>
-                  <Image source={item.src} style={styles.imageC} />
-                  <Text>{item.name}</Text>
-                  <Text>{item.name2}</Text>
-                  <Text style={{}}>{item.price}</Text>
-                  <TouchableOpacity>
-                    <Text>Add To Cart</Text>
+                  <Image source={item.src} style={styles.imageS} />
+                  <Text style={styles.price}>{item.price}</Text>
+                  <Text style={styles.name}>{item.name}</Text>
+                  <TouchableOpacity style={styles.addB}>
+                    <Text
+                      style={{color: '#fff', fontWeight: 'bold', fontSize: 12}}>
+                      Add To Cart
+                    </Text>
                   </TouchableOpacity>
                 </View>
               ))}
             </ScrollView>
-
           </View>
-
-
-          {/* <View style={styles.stext}>
-            <Text
-              style={{
-                color: '#FFFFFF',
-                fontSize: 24,
-                fontWeight: 'bold',
-                left:20
-              }}>
-              Top
-            </Text>
-            <Text style={styles.middle}>Products</Text>
-            </View> */}
-
-          {/* <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              style={styles.sliderContainer}>
-              {slider.map(item => (
-                <View key={item.id} style={styles.card}>
-                  <Image source={item.src} style={styles.simage} />
-                  <Text style={styles.price}>{item.price}</Text>
-                  <Text style={styles.name}>{item.name}</Text>
-                  <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Add to Cart</Text>
-                  </TouchableOpacity>
-                </View>
-              ))}
-            </ScrollView> */}
 
           <View style={styles.text}>
             <Text
@@ -255,7 +226,7 @@ const Home = () => {
             {collections.map(item => (
               <TouchableOpacity key={item.id}>
                 <LinearGradient
-                  colors={['#4dffef', '#e4fffa', '#59cdff']}
+                  colors={['#f4b3ef', '#b2e5f8', '#f2f3e2','#36a5ff']}
                   start={{x: 0, y: 1}}
                   end={{x: 1, y: 1}}
                   key={item.id}
@@ -350,33 +321,63 @@ const styles = StyleSheet.create({
   },
   scontainer: {
     backgroundColor: '#000000',
-    width:'100%',
-    height:240,
-    flexDirection:'row',
+    width: '100%',
+    height: 240,
+    flexDirection: 'row',
+    flex: 1,
   },
-  ttext:{
-    zIndex:10,
-    backgroundColor:'#000000',
-    width:'33%',
-    height:240,
-    alignItems:'center',
-    justifyContent:'center',
+  ttext: {
+    zIndex: 10,
+    backgroundColor: '#000000',
+    width: '33%',
+    height: 240,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  slider:{
-    zIndex:2,
-    backgroundColor:'black',
-    height:230,
+  slider: {
+    flexDirection: 'row',
   },
-  sliderContainer:{
-    justifyContent:'center',
-    alignItems:'center',
-    width:'22%',
-    backgroundColor:'white',
-    marginBottom:10,
-    marginTop:18,
-    marginLeft:15,
-    borderRadius:15,
-    padding:10,
+  sliderContainer: {
+    // minWidth:0,
+    // backgroundColor:'white',
+    // marginBottom:10,
+    // marginTop:18,
+    // marginLeft:1,
+    // marginRight:15,
+    // borderRadius:15,
+    // padding:10,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    padding: 15,
+    width: 170,
+    alignItems: 'center',
+    marginRight: 10,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  imageS: {
+    width: 120,
+    height: 100,
+    resizeMode: 'contain',
+    top:-10,
+    marginBottom:-10
+  },
+  name: {
+    color: '#000',
+    fontWeight: 'bold',
+    fontSize: 14,
+    marginBottom: 10,
+  },
+  price: {
+    color: '#000',
+    fontSize: 14,
+    marginBottom: 5,
+  },
+  addB: {
+    backgroundColor: '#AB0F1E',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 5,
   },
   text: {
     paddingHorizontal: 20,
@@ -406,6 +407,7 @@ const styles = StyleSheet.create({
     width: 90,
     height: 90,
     right: 10,
+    resizeMode: 'contain',
   },
   bottomText: {
     marginTop: 5,
