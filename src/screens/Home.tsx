@@ -28,6 +28,12 @@ const collections = [
   {id: '1', src: require('../assets/Nike3.png')},
   {id: '2', src: require('../assets/c2.png')},
   {id: '3', src: require('../assets/c1.png')},
+  {id: '4', src: require('../assets/c3.png')},
+  {id: '5', src: require('../assets/c1.png')},
+  {id: '6', src: require('../assets/c2.png')},
+  // {id: '7', src: require('../assets/c2.png')},
+  // {id: '8', src: require('../assets/c1.png')},
+  // {id: '9', src: require('../assets/c3.png')},
 ];
 
 const slider = [
@@ -338,14 +344,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   sliderContainer: {
-    // minWidth:0,
-    // backgroundColor:'white',
-    // marginBottom:10,
-    // marginTop:18,
-    // marginLeft:1,
-    // marginRight:15,
-    // borderRadius:15,
-    // padding:10,
     backgroundColor: '#fff',
     borderRadius: 10,
     padding: 15,
@@ -384,21 +382,21 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   gridbox: {
-    flexDirection: 'row',
     marginTop: 10,
     justifyContent: 'center',
-    padding: 10,
-    alignItems: 'center',
+    flexDirection:'row',
+    flexWrap:'wrap',
+    gap:8
   },
   gradientgrid: {
     padding: 2,
-    borderRadius: 16,
+    borderRadius: 21,
     marginHorizontal: 10,
   },
   imageContainer: {
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderRadius: 15,
+    borderRadius: 20,
     backgroundColor: '#fff',
     padding: 10,
     left: 0,
