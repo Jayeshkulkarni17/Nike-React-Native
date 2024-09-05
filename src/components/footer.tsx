@@ -1,54 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {StyleSheet, Text} from 'react-native';
 import Octicons from 'react-native-vector-icons/Octicons';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 const Footer: React.FC = () => {
+  const [activeIcon,setActiveIcon] = useState<String>('Home');
+
+  const navigation = useNavigation();
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const state = navigation.getState();
+      const routeName = state?.routes[state.index]?.name.toLowerCase() || 'home';
+      setActiveIcon(routeName);
+    },[navigation])
+  );
+
+  const handlePress = (iconName: String) => {
+    setActiveIcon(iconName);
+    if (iconName === 'search') {
+        navigation.navigate('Search');
+    } else if (iconName === 'home') {
+        navigation.navigate('Home');
+    } 
+    else if (iconName === 'setting') {
+        navigation.navigate('Setting');
+    }
+};
+
+
   return (
     <View style={styles.footer}>
       <View style={styles.iconContainer}>
-        <TouchableOpacity
+        <TouchableOpacity onPress={() => handlePress('home')}
           style={styles.iconWithText}
         >
           <Octicons
             name="home"
             size={27}
-            color={'#000000'}
-          />
+            color={activeIcon === 'home' ? '#000000' : '#9E9E9E'}
+            />
           <Text
-            style={styles.text}>
+            style={[styles.text, activeIcon === 'home' && styles.activeText]}>
             Home
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
+        <TouchableOpacity onPress={() => handlePress('search')}
           style={styles.iconWithText}
         >
           <Ionicons
             name="search"
             size={28}
-            color={'#000000'}
-          />
+            color={activeIcon === 'search' ?  '#000000' : '#9E9E9E'}
+            />
           <Text
-            style={[
-              styles.text,
-            ]}>
+            style={[styles.text, activeIcon === 'search' && styles.activeText]}>
             Search
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
+        <TouchableOpacity onPress={() => handlePress('setting')}
           style={styles.iconWithText}
         >
           <Ionicons
             name="settings-outline"
             size={28}
-            color={'#000000'}
-          />
+            color={activeIcon === 'setting' ? '#000000' : '#9E9E9E'}
+            />
           <Text
-            style={[
-              styles.text
-            ]}>
+           style={[styles.text, activeIcon === 'setting' && styles.activeText]}>
             Setting
           </Text>
         </TouchableOpacity>
@@ -84,7 +105,7 @@ const styles = StyleSheet.create({
     width: '33%',
   },
   text: {
-    color: '#000000',
+    color: '#9E9E9E',
     fontSize: 14,
     fontWeight: '600',
   },

@@ -4,11 +4,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import Splash from "../screens/Splash";
 import GetStarted from "../screens/GetStarted";
 import Home from "../screens/Home";
+import Search from "../screens/Search";
+import Setting from "../screens/Setting";
 
 type RootStackParamList = {
     Splash: undefined;
     GetStarted:undefined;
     Home:undefined;
+    Search:undefined;
+    Setting:undefined;
 
 }
 
@@ -33,6 +37,8 @@ function Routing() {
             <Stack.Screen name="Splash" component={Splash} />
             <Stack.Screen name="GetStarted" component={GetStarted} />
             <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Search" component={Search} />
+            <Stack.Screen name="Setting" component={Setting}/>
 
             </Stack.Group>
             </Stack.Navigator>
