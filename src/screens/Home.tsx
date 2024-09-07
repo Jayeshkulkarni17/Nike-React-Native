@@ -119,7 +119,7 @@ const Home = () => {
         colors={['#FFFFFF', '#ECE2D1']}
         start={{x: 0, y: 0}}
         end={{x: 0, y: 1}}
-        style={styles.gradient}>
+        style={styles.container}>
         <Header />
         <ScrollView>
           <View style={styles.typeContainer}>
@@ -268,9 +268,6 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
-  gradient: {
     flex: 1,
   },
   typeContainer: {
