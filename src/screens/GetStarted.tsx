@@ -38,7 +38,7 @@ const GetStarted = () => {
         useNativeDriver: true,
       }),
     ]).start();
-  }, [firstCircleAnim, secondCircleAnim, shoeAnim,logoAnim]);
+  }, [firstCircleAnim,secondCircleAnim,shoeAnim,logoAnim]);
  
   const handleGetStarted = () => {
     navigation.navigate('Home');

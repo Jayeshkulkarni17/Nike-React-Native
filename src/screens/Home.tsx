@@ -26,7 +26,7 @@ const images = [
 
 const collections = [
   {id: '1', src: require('../assets/Nike3.png')},
-  {id: '2', src: require('../assets/c2.png')},
+  {id: '2', src: require('../assets/nike7.png')},
   {id: '3', src: require('../assets/c1.png')},
   {id: '4', src: require('../assets/c3.png')},
   {id: '5', src: require('../assets/c1.png')},

@@ -9,7 +9,6 @@ const Setting = () => {
         <View style={styles.container}>
             <Header/>
             <Footer />
-
         </View>
     )
 }
