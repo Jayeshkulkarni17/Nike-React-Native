@@ -46,7 +46,7 @@ const slider = [
   {
     id: '2',
     price: '$80,000',
-    name: 'Nike SB Dunk Low Pro"Friends & Family"',
+    name: 'Nike SB Dunk Low Pro "Paris"',
     src: require('../assets/c2.png'),
   },
   {
@@ -139,7 +139,7 @@ const Home = () => {
           <View style={styles.movingtext}>
             <TextTicker
               style={styles.marqueeText}
-              duration={30000}
+              duration={10000}
               loop
               bounce
               shouldAnimateTreshold={40}
@@ -179,18 +179,16 @@ const Home = () => {
               <Text
                 style={{
                   color: '#FFFFFF',
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: 'bold',
-                  marginHorizontal: 48,
                 }}>
                 Top
               </Text>
               <Text
                 style={{
                   color: '#FFFFFF',
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: 'bold',
-                  marginHorizontal: 20,
                 }}>
                 Products
               </Text>
@@ -232,7 +230,7 @@ const Home = () => {
             {collections.map(item => (
               <TouchableOpacity key={item.id}>
                 <LinearGradient
-                  colors={['#f4b3ef', '#b2e5f8', '#f2f3e2','#36a5ff']}
+                  colors={['#f4b3ef', '#b2e5f8', '#f2f3e2', '#36a5ff']}
                   start={{x: 0, y: 1}}
                   end={{x: 1, y: 1}}
                   key={item.id}
@@ -291,12 +289,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    height: 40,
+    height: 30,
     backgroundColor: '#000000',
     marginTop: 20,
   },
   marqueeText: {
-    top: 5,
+    justifyContent:'center',
+    alignItems: 'center',
+    width:'100%',
     fontSize: 20,
     color: 'red',
     fontWeight: '600',
@@ -325,7 +325,7 @@ const styles = StyleSheet.create({
   scontainer: {
     backgroundColor: '#000000',
     width: '100%',
-    height: 240,
+    height: 260,
     flexDirection: 'row',
     flex: 1,
   },
@@ -333,7 +333,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
     backgroundColor: '#000000',
     width: '33%',
-    height: 240,
+    height: 260,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -343,7 +343,7 @@ const styles = StyleSheet.create({
   sliderContainer: {
     backgroundColor: '#fff',
     borderRadius: 10,
-    padding: 15,
+    padding: 10,
     width: 170,
     alignItems: 'center',
     marginRight: 10,
@@ -354,14 +354,12 @@ const styles = StyleSheet.create({
     width: 120,
     height: 100,
     resizeMode: 'contain',
-    top:-10,
-    marginBottom:-10
   },
   name: {
     color: '#000',
     fontWeight: 'bold',
     fontSize: 14,
-    marginBottom: 10,
+    marginBottom: 5,
   },
   price: {
     color: '#000',
@@ -369,6 +367,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   addB: {
+    marginTop:10,
     backgroundColor: '#AB0F1E',
     paddingHorizontal: 20,
     paddingVertical: 10,
@@ -381,9 +380,9 @@ const styles = StyleSheet.create({
   gridbox: {
     marginTop: 10,
     justifyContent: 'center',
-    flexDirection:'row',
-    flexWrap:'wrap',
-    gap:8
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
   },
   gradientgrid: {
     padding: 2,
@@ -406,7 +405,7 @@ const styles = StyleSheet.create({
   },
   bottomText: {
     marginTop: 5,
-    marginBottom: 100,
+    marginBottom: 50,
     paddingHorizontal: 20,
   },
   bText: {

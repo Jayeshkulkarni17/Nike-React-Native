@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import LinearGradient from 'react-native-linear-gradient';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {ScrollView} from 'react-native-gesture-handler';
+import { Image } from 'react-native-elements';
 
 const collections = [
   {
@@ -91,7 +92,10 @@ const Search = () => {
           <View style={styles.scontainer}>
             {collections.map(item => (
               <TouchableOpacity key={item.id} style={styles.sbox}>
-
+                <Image source={item.src} style={styles.imageS}/>
+                  <Text>{item.name}</Text>
+                  <Text>{item.size}</Text>
+                  <Text>{item.price}</Text>
               </TouchableOpacity>
             ))}
           </View>
@@ -121,17 +125,22 @@ const styles = StyleSheet.create({
     paddingRight: 20,
   },
   scontainer:{
-    marginTop:10,
-    marginHorizontal:20,
+    marginTop:20,
     flexDirection:'row',
+    flexWrap:'wrap',
     justifyContent:'center',
-    gap:10
+    gap:25,
+    marginBottom:60
   },
   sbox:{
     alignItems:'center',
-    width:'20%',
-    height:80
-  }
+    width:'40%',
+    height:200,
+  },
+  imageS: {
+    width: 110,
+    height: 100,
+  },
 });
 
 export default Search;

@@ -80,25 +80,21 @@ const Footer: React.FC = () => {
 
 const styles = StyleSheet.create({
   footer: {
-    position: 'absolute',
+    alignItems:'center',
+    justifyContent:'center',
     zIndex: 1,
     width: '100%',
-    height: 90,
-    top: 720,
+    paddingVertical:10,
+    bottom:0,
     backgroundColor: '#FFFFFF',
-    borderRadius: 30,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    borderTopRightRadius:25,
+    borderTopLeftRadius:25
   },
-  
   foot: {},
   iconContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '100%',
-    bottom: 5,
   },
   iconWithText: {
     alignItems: 'center',
