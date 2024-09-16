@@ -369,7 +369,7 @@ const styles = StyleSheet.create({
   addB: {
     marginTop:10,
     backgroundColor: '#AB0F1E',
-    paddingHorizontal: 20,
+    paddingHorizontal: 30,
     paddingVertical: 10,
     borderRadius: 5,
   },

@@ -12,14 +12,14 @@ const collections = [
     id: '1',
     price: '$80,000',
     name: 'Nike SB Dunk Low Pro "Paris"',
-    size:'uk 9',
+    size:'US 9',
     src: require('../assets/Nike3.png'),
   },
   {
     id: '2',
     price: '$80,000',
-    name: 'Nike SB Dunk Low Pro"Friends & Family"',
-    size:'uk 8',
+    name: 'Nike SB Dunk Low Pro "Friends & Family"',
+    size:'US 9',
     src: require('../assets/c2.png'),
   },
   {
@@ -27,42 +27,42 @@ const collections = [
     price: '$80,000',
     name: 'Nike SB Dunk Low Pro "Paris"',
     src: require('../assets/c1.png'),
-    size:'uk 9',
+    size:'US 9',
   },
   {
     id: '4',
     price: '$80,000',
     name: 'Nike SB Dunk Low Pro "Paris"',
     src: require('../assets/c3.png'),
-    size:'uk 9',
+    size:'US 9',
   },
   {
     id: '5',
     price: '$80,000',
     name: 'Nike SB Dunk Low Pro "Paris"',
     src: require('../assets/c3.png'),
-    size:'uk 9',
+    size:'US 9',
   },
   {
     id: '6',
     price: '$80,000',
     name: 'Nike SB Dunk Low Pro "Paris"',
     src: require('../assets/c3.png'),
-    size:'uk 9',
+    size:'US 9',
   },
   {
     id: '7',
     price: '$80,000',
     name: 'Nike SB Dunk Low Pro "Paris"',
     src: require('../assets/c3.png'),
-    size:'uk 9',
+    size:'US 9',
   },
   {
     id: '8',
     price: '$80,000',
     name: 'Nike SB Dunk Low Pro "Paris"',
     src: require('../assets/c3.png'),
-    size:'uk 9',
+    size:'US 9',
   },
 ];
 
@@ -93,9 +93,15 @@ const Search = () => {
             {collections.map(item => (
               <TouchableOpacity key={item.id} style={styles.sbox}>
                 <Image source={item.src} style={styles.imageS}/>
-                  <Text>{item.name}</Text>
-                  <Text>{item.size}</Text>
-                  <Text>{item.price}</Text>
+                <Text style={{color:'#003149',fontWeight:'800'}}>{item.name}</Text>
+                <View style={{marginLeft:-50,gap:5,marginTop:5}}>
+                  <Text style={{color:'#003149'}}>{item.size}</Text>
+                  <View style={{flexDirection:'row'}}>
+                  <Text style={{color:'#003149',fontWeight:'800'}}>Price:&nbsp;</Text>
+                  <Text style={{color:'#003149',fontWeight:'800'}}>{item.price}</Text>
+                  </View>
+                </View> 
+                  <View style={styles.bottomline}/>
               </TouchableOpacity>
             ))}
           </View>
@@ -133,6 +139,7 @@ const styles = StyleSheet.create({
     marginBottom:60
   },
   sbox:{
+    justifyContent:'center',
     alignItems:'center',
     width:'40%',
     height:200,
@@ -140,6 +147,13 @@ const styles = StyleSheet.create({
   imageS: {
     width: 110,
     height: 100,
+  },
+  bottomline:{
+    marginTop:20,
+    width:150,
+    height:1,
+    // paddingVertical:1,
+    backgroundColor:'#003149',
   },
 });
 
