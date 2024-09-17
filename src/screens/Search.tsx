@@ -70,6 +70,11 @@ const collections = [
 const Search = () => {
   const [search, setSearch] = useState('');
 
+  const filteredCollections = collections.filter(item => 
+    item.name.toLowerCase().includes(search.toLowerCase()) || 
+    item.size.toLowerCase().includes(search.toLowerCase())
+  )
+
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -90,20 +95,24 @@ const Search = () => {
         </View>
         <ScrollView>
           <View style={styles.scontainer}>
-            {collections.map(item => (
-              <TouchableOpacity key={item.id} style={styles.sbox}>
-                <Image source={item.src} style={styles.imageS}/>
-                <Text style={{color:'#003149',fontWeight:'800'}}>{item.name}</Text>
-                <View style={{marginLeft:-50,gap:5,marginTop:5}}>
+            {filteredCollections.length > 0 ? (
+              filteredCollections.map(item => (
+                <TouchableOpacity key={item.id} style={styles.sbox}>
+                <Image source={item.src} style={styles.imageS} />
+                <Text style={{color:'#003149', fontWeight:'800'}}>{item.name}</Text>
+                <View style={{marginLeft:-50, gap:5, marginTop:5}}>
                   <Text style={{color:'#003149'}}>{item.size}</Text>
                   <View style={{flexDirection:'row'}}>
-                  <Text style={{color:'#003149',fontWeight:'800'}}>Price:&nbsp;</Text>
-                  <Text style={{color:'#003149',fontWeight:'800'}}>{item.price}</Text>
+                    <Text style={{color:'#003149', fontWeight:'500'}}>Price:&nbsp;</Text>
+                    <Text style={{color:'#003149', fontWeight:'500'}}>{item.price}</Text>
                   </View>
                 </View> 
-                  <View style={styles.bottomline}/>
+                <View style={styles.bottomline}/>
               </TouchableOpacity>
-            ))}
+              ))
+            ) : (
+              <Text style={styles.noresult}>No Results Found</Text>
+            )}
           </View>
         </ScrollView>
       </LinearGradient>
@@ -135,8 +144,8 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     flexWrap:'wrap',
     justifyContent:'center',
-    gap:25,
-    marginBottom:60
+    gap:30,
+    marginBottom:80
   },
   sbox:{
     justifyContent:'center',
@@ -150,11 +159,19 @@ const styles = StyleSheet.create({
   },
   bottomline:{
     marginTop:20,
+    marginBottom:0,
     width:150,
     height:1,
     // paddingVertical:1,
     backgroundColor:'#003149',
   },
+  noresult:{
+    marginTop: 20,
+    textAlign: 'center',
+    color: '#003149',
+    fontWeight: '700',
+    fontSize: 16,
+  }
 });
 
 export default Search;

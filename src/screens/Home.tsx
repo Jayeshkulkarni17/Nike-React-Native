@@ -272,13 +272,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     paddingTop: 10,
-    // paddingHorizontal: 10,
   },
   line: {
     width: 1,
     height: 20,
     backgroundColor: '#003149',
-    marginHorizontal: 8,
+    marginHorizontal: 10,
   },
   typetext: {
     fontFamily: 'Gilroy-Regular',
