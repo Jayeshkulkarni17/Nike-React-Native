@@ -11,7 +11,10 @@ import {
   ViewToken,
   Dimensions,
 } from 'react-native';
+import {useDispatch} from 'react-redux';
+import {addItem} from '../utils/CartSlice';
 import Header from '../components/header';
+import Toast from 'react-native-toast-message';
 import LinearGradient from 'react-native-linear-gradient';
 import TextTicker from 'react-native-text-ticker';
 import Footer from '../components/footer';
@@ -67,6 +70,25 @@ const Home = () => {
   const flatListRef = useRef<FlatList<any>>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const animatedValue = useRef(new Animated.Value(0)).current;
+  const dispatch = useDispatch();
+
+  const handleAddCart = (Product: any) => {
+    dispatch(addItem(Product));
+    Toast.show({
+      type: 'success', // Or 'error', 'info' based on the type of message
+      text1: 'Added to Cart',
+      text2: `${Product.name} has been added to your cart! 👟`,
+      text1Style: {
+        fontSize: 20, // Increase the size of text1
+        fontWeight: 'bold',
+      },
+      text2Style: {
+        fontSize: 16, // Increase the size of text2
+      },
+      position: 'top', // You can use 'top' or 'bottom'
+      visibilityTime: 4000, // Time in ms
+    });
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -203,7 +225,9 @@ const Home = () => {
                   <Image source={item.src} style={styles.imageS} />
                   <Text style={styles.price}>{item.price}</Text>
                   <Text style={styles.name}>{item.name}</Text>
-                  <TouchableOpacity style={styles.addB}>
+                  <TouchableOpacity
+                    style={styles.addB}
+                    onPress={() => handleAddCart(item)}>
                     <Text
                       style={{color: '#fff', fontWeight: 'bold', fontSize: 12}}>
                       Add To Cart
@@ -293,9 +317,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   marqueeText: {
-    justifyContent:'center',
+    justifyContent: 'center',
     alignItems: 'center',
-    width:'100%',
+    width: '100%',
     fontSize: 20,
     color: 'red',
     fontWeight: '600',
@@ -324,7 +348,7 @@ const styles = StyleSheet.create({
   scontainer: {
     backgroundColor: '#000000',
     width: '100%',
-    height: 260,
+    paddingVertical: 3,
     flexDirection: 'row',
     flex: 1,
   },
@@ -332,7 +356,8 @@ const styles = StyleSheet.create({
     zIndex: 10,
     backgroundColor: '#000000',
     width: '33%',
-    height: 260,
+    // height: 260,
+    // paddingVertical:3,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -342,12 +367,12 @@ const styles = StyleSheet.create({
   sliderContainer: {
     backgroundColor: '#fff',
     borderRadius: 10,
-    padding: 10,
+    // padding: 10,
+    paddingVertical: 10,
     width: 170,
     alignItems: 'center',
-    marginRight: 10,
-    marginTop: 10,
-    marginBottom: 10,
+    marginHorizontal: 5,
+    marginVertical: 5,
   },
   imageS: {
     width: 120,
@@ -366,7 +391,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   addB: {
-    marginTop:10,
+    marginTop: 20,
     backgroundColor: '#AB0F1E',
     paddingHorizontal: 30,
     paddingVertical: 10,
