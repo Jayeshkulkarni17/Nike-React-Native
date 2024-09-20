@@ -6,6 +6,7 @@ import GetStarted from '../screens/GetStarted';
 import Home from '../screens/Home';
 import Search from '../screens/Search';
 import Setting from '../screens/Setting';
+import Cart from '../screens/Cart';
 
 type RootStackParamList = {
   Splash: undefined;
@@ -13,6 +14,7 @@ type RootStackParamList = {
   Home: undefined;
   Search: undefined;
   Setting: undefined;
+  Cart:undefined;
 };
 
 declare global {
@@ -36,6 +38,8 @@ function Routing() {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Search" component={Search} />
           <Stack.Screen name="Setting" component={Setting} />
+          <Stack.Screen name="Cart" component={Cart} />
+
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

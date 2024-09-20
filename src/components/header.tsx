@@ -1,23 +1,29 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const Header = () => {
+  const navigation = useNavigation();
+
+  const handlePressCart = () => {
+    navigation.navigate('Cart');
+  }
   return (
     <View style={styles.head}>
       <View style={styles.headContainer}>
-        <View>
+        <TouchableOpacity onPress={() => {navigation.navigate('Home')}}>
           <Image
             source={require('../assets/nikelogo.png')}
             style={styles.logo}
           />
-        </View>
+        </TouchableOpacity>
 
         <View style={{flexDirection:'row'}}>
           <TouchableOpacity style={styles.iconContainer}>
             <AntDesign name="hearto" size={25} color={'#000000'} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconContainer}>
+          <TouchableOpacity style={styles.iconContainer} onPress={handlePressCart}>
             <AntDesign name="shoppingcart" size={28} color={'#000000'} />
           </TouchableOpacity>
         </View>
