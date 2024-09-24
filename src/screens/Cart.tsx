@@ -1,15 +1,33 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, ScrollView, ImageSourcePropType } from 'react-native';
-import { useSelector } from 'react-redux';
-import { RootState } from '../utils/Store'; // Import the store type for type safety
+import { StyleSheet, View, Text, Image, ScrollView, ImageSourcePropType, TouchableOpacity } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../utils/Store';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import LinearGradient from 'react-native-linear-gradient';
+import { clearCart } from '../utils/CartSlice';
+import Toast from 'react-native-toast-message';
 
 // Define the component
 const Cart = () => {
   // Access the cart items from the Redux store
-  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const cartItems = useSelector((state: RootState,) => state.cart.items);
+  const dispatch = useDispatch();
+
+  const handleClear = () => {
+    dispatch(clearCart());
+    Toast.show({
+      type: 'success', // Or 'error', 'info' based on the type of message
+      text1: 'Cart Is Clear',
+      text1Style: {
+        fontSize: 20, // Increase the size of text1
+        fontWeight: 'bold',
+      },
+      position: 'top', // You can use 'top' or 'bottom'
+      visibilityTime: 4000, // Time in ms
+    });
+
+  }
 
   return (
     <View style={styles.container}>
@@ -20,23 +38,27 @@ const Cart = () => {
         style={styles.container}
       >
         <Header />
-        
         {/* Check if there are items in the cart */}
         <View style={styles.cartItemsContainer}>
           {cartItems.length > 0 ? (
+            <>
             <ScrollView>
-              {cartItems.map((item: { id: React.Key | null | undefined; src: ImageSourcePropType | undefined; name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; price: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; }) => (
+              {cartItems.map((item: any) => (
                 <View key={item.id} style={styles.cartItem}>
                   <Image source={item.src} style={styles.image} />
                   <View style={styles.details}>
                     <Text style={styles.name}>{item.name}</Text>
-                    <Text style={styles.price}>${item.price}</Text>
+                    <Text style={styles.price}>{item.price}</Text>
                   </View>
                 </View>
               ))}
             </ScrollView>
+            <TouchableOpacity style={styles.clearB} onPress={handleClear}>
+              <Text style={{color:"#003149",fontSize:18,fontWeight:'700'}}>Clear Cart</Text>
+            </TouchableOpacity>
+            </>
           ) : (
-            <Text style={styles.emptyText}>Your cart is empty</Text>
+            <Text style={styles.emptyText}>Your cart is empty</Text>      
           )}
         </View>
       </LinearGradient>
@@ -52,6 +74,7 @@ const styles = StyleSheet.create({
   },
   cartItemsContainer: {
     padding: 16,
+    // backgroundColor:'#000'
   },
   cartItem: {
     flexDirection: 'row',
@@ -79,6 +102,17 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginTop: 20,
     color: 'grey',
+  },
+  clearB:{
+    justifyContent:'center',
+    alignItems:'center',
+    paddingHorizontal:10,
+    paddingVertical:15,
+    marginHorizontal:120,
+    borderWidth:2,
+    borderRadius:30,
+    borderColor:'#003149'
+    // backgroundColor:'#000'
   },
 });
 

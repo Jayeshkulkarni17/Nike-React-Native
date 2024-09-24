@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TextInput, TouchableOpacity, View,Image} from 'react-native';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import LinearGradient from 'react-native-linear-gradient';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {ScrollView} from 'react-native-gesture-handler';
-import { Image } from 'react-native-elements';
 
 const collections = [
   {
@@ -88,9 +87,10 @@ const Search = () => {
             placeholder="Search"
             value={search}
             onChangeText={text => setSearch(text)}
+            style={{width:'90%'}}
           />
           <TouchableOpacity onPress={() => setSearch('')}>
-            <EvilIcons name="close-o" size={26} />
+            <EvilIcons name="close-o" size={26}/>
           </TouchableOpacity>
         </View>
         <ScrollView>

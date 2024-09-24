@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
       const routeName = state?.routes[state.index]?.name.toLowerCase() || 'home';
       setActiveIcon(routeName);
     },[navigation])
-  );
+  );   
 
   const handlePress = (iconName: String) => {
     setActiveIcon(iconName);

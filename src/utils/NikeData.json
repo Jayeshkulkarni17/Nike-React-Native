@@ -1,0 +1,122 @@
+[
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-max-90-white-black.png",
+        "name": "Nike Air Max 90",
+        "size": [7, 8, 9, 10, 11],
+        "price": 9995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-jordan-1-mid.png",
+        "name": "Air Jordan 1 Mid",
+        "size": [7, 8, 9, 10, 11, 12],
+        "price": 11495
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-force-1-07-black.png",
+        "name": "Nike Air Force 1 '07",
+        "size": [6, 7, 8, 9, 10, 11],
+        "price": 8995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/zoomx-vaporfly-next-2.png",
+        "name": "Nike ZoomX Vaporfly NEXT% 2",
+        "size": [7, 8, 9, 10, 11],
+        "price": 22995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-max-plus.png",
+        "name": "Nike Air Max Plus",
+        "size": [7, 8, 9, 10, 11],
+        "price": 14995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-max-270-react.png",
+        "name": "Nike Air Max 270 React",
+        "size": [6, 7, 8, 9, 10],
+        "price": 12995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/pegasus-trail-3-gore-tex.png",
+        "name": "Nike Pegasus Trail 3 GORE-TEX",
+        "size": [6, 7, 8, 9, 10, 11, 12],
+        "price": 12995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-jordan-4-retro.png",
+        "name": "Air Jordan 4 Retro",
+        "size": [7, 8, 9, 10, 11, 12],
+        "price": 15995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-max-97.png",
+        "name": "Nike Air Max 97",
+        "size": [7, 8, 9, 10, 11],
+        "price": 15995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-max-270.png",
+        "name": "Nike Air Max 270",
+        "size": [6, 7, 8, 9, 10],
+        "price": 12995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-jordan-3-retro.png",
+        "name": "Air Jordan 3 Retro",
+        "size": [6, 7, 8, 9, 10, 11, 12],
+        "price": 17995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-force-1-07-white.png",
+        "name": "Nike Air Force 1 '07 White",
+        "size": [6, 7, 8, 9, 10, 11],
+        "price": 8995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/lebron-witness-6.png",
+        "name": "Nike LeBron Witness 6",
+        "size": [7, 8, 9, 10, 11],
+        "price": 12995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-zoom-tempo-next-flyknit.png",
+        "name": "Nike Air Zoom Tempo NEXT% Flyknit",
+        "size": [6, 7, 8, 9, 10],
+        "price": 17995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/mercurial-superfly-8.png",
+        "name": "Nike Mercurial Superfly 8 Elite",
+        "size": [6, 7, 8, 9, 10, 11],
+        "price": 23995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-max-flyknit-racer.png",
+        "name": "Nike Air Max Flyknit Racer",
+        "size": [6, 7, 8, 9, 10, 11],
+        "price": 12995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-zoom-pegasus-39.png",
+        "name": "Nike Air Zoom Pegasus 39",
+        "size": [7, 8, 9, 10, 11],
+        "price": 11995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/air-max-720.png",
+        "name": "Nike Air Max 720",
+        "size": [7, 8, 9, 10, 11, 12],
+        "price": 17995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/nikecourt-air-zoom.png",
+        "name": "NikeCourt Air Zoom Vapor Pro",
+        "size": [6, 7, 8, 9, 10],
+        "price": 9995
+    },
+    {
+        "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/blazer-mid-77-vintage.png",
+        "name": "Nike Blazer Mid '77 Vintage",
+        "size": [6, 7, 8, 9, 10, 11],
+        "price": 8995
+    }
+]
