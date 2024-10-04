@@ -12,7 +12,7 @@ import {
   Dimensions,
 } from 'react-native';
 import {useDispatch} from 'react-redux';
-import {addItem} from '../utils/CartSlice';
+import {addItem, removeItem} from '../utils/CartSlice';
 import Header from '../components/header';
 import Toast from 'react-native-toast-message';
 import LinearGradient from 'react-native-linear-gradient';
@@ -22,9 +22,9 @@ import Footer from '../components/footer';
 const {width: screenWidth} = Dimensions.get('window');
 
 const images = [
-  {id: '1', src: require('../assets/homeshoe1.png')},
-  {id: '2', src: require('../assets/homeshoe1.png')},
-  {id: '3', src: require('../assets/homeshoe1.png')},
+  {id: '1', src: require('../assets/1.png')},
+  {id: '2', src: require('../assets/3.png')},
+  {id: '3', src: require('../assets/2.png')},
 ];
 
 const collections = [
@@ -32,7 +32,7 @@ const collections = [
   {id: '2', src: require('../assets/nike7.png')},
   {id: '3', src: require('../assets/c1.png')},
   {id: '4', src: require('../assets/c3.png')},
-  {id: '5', src: require('../assets/c1.png')},
+  {id: '5', src: require('../assets/Nike10.png')},
   {id: '6', src: require('../assets/c2.png')},
   // {id: '7', src: require('../assets/c2.png')},
   // {id: '8', src: require('../assets/c1.png')},
@@ -71,25 +71,57 @@ const Home = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const animatedValue = useRef(new Animated.Value(0)).current;
   const dispatch = useDispatch();
+  const [addedToCart, setAddedToCart] = useState<{ [key: string]: boolean }>({});
 
   const handleAddCart = (Product: any) => {
-    dispatch(addItem(Product));
-    Toast.show({
-      type: 'success', // Or 'error', 'info' based on the type of message
-      text1: 'Added to Cart',
-      text2: `${Product.name} has been added to your cart! 👟`,
-      text1Style: {
-        fontSize: 20, // Increase the size of text1
-        fontWeight: 'bold',
-      },
-      text2Style: {
-        fontSize: 16, // Increase the size of text2
-      },
-      position: 'top', // You can use 'top' or 'bottom'
-      visibilityTime: 4000, // Time in ms
-    });
+    if (addedToCart[Product.id]) {
+      // If item is already added, remove it from the cart
+      dispatch(removeItem(Product.id));
+      Toast.show({
+        type: 'info',
+        text1: 'Removed from Cart',
+        text2: `${Product.name} has been removed from your cart!`,
+        text1Style: {
+          fontSize: 20,
+          fontWeight: 'bold',
+        },
+        text2Style: {
+          fontSize: 16,
+        },
+        position: 'top',
+        visibilityTime: 4000,
+      });
+  
+      // Set the product as not added
+      setAddedToCart((prev) => ({
+        ...prev,
+        [Product.id]: false, // Mark as not added
+      }));
+    } else {
+      // If item is not in the cart, add it
+      dispatch(addItem(Product));
+      Toast.show({
+        type: 'success',
+        text1: 'Added to Cart',
+        text2: `${Product.name} has been added to your cart! 👟`,
+        text1Style: {
+          fontSize: 20,
+          fontWeight: 'bold',
+        },
+        text2Style: {
+          fontSize: 16,
+        },
+        position: 'top',
+        visibilityTime: 4000,
+      });
+  
+      // Set the product as added
+      setAddedToCart((prev) => ({
+        ...prev,
+        [Product.id]: true, // Mark as added
+      }));
+    }
   };
-
   useEffect(() => {
     const interval = setInterval(() => {
       const nextIndex = (currentIndex + 1) % images.length;
@@ -128,11 +160,11 @@ const Home = () => {
   const getDotStyle = (index: number) => {
     const isActive = index === currentIndex;
     return {
-      width: isActive ? 30 : 30,
-      height: isActive ? 6 : 6,
+      width: isActive ? 10 : 10,
+      height: isActive ? 10 : 10,
       backgroundColor: isActive ? '#ECECEC' : '#FFFFFF',
       borderRadius: 6,
-      marginHorizontal: 2,
+      marginHorizontal: 5,
     };
   };
   return (
@@ -161,7 +193,7 @@ const Home = () => {
           <View style={styles.movingtext}>
             <TextTicker
               style={styles.marqueeText}
-              duration={10000}
+              duration={4000}
               loop
               bounce
               shouldAnimateTreshold={40}
@@ -230,7 +262,7 @@ const Home = () => {
                     onPress={() => handleAddCart(item)}>
                     <Text
                       style={{color: '#fff', fontWeight: 'bold', fontSize: 12}}>
-                      Add To Cart
+                      {addedToCart[item.id] ? 'Added To Cart' : 'Add To Cart'}
                     </Text>
                   </TouchableOpacity>
                 </View>
@@ -278,7 +310,7 @@ const Home = () => {
                 fontWeight: '600',
                 marginTop: 8,
               }}>
-              Crafted with ❤️
+              Crafted with ❤️‍🔥
             </Text>
           </View>
         </ScrollView>
@@ -321,7 +353,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
     fontSize: 20,
-    color: 'red',
+    color: '#FFF',
     fontWeight: '600',
     fontFamily: 'Gilroy-Bold',
   },
@@ -393,16 +425,17 @@ const styles = StyleSheet.create({
   addB: {
     marginTop: 20,
     backgroundColor: '#AB0F1E',
-    paddingHorizontal: 30,
+    // paddingHorizontal: 30,
+    width:'70%',
+    alignItems:'center',
     paddingVertical: 10,
     borderRadius: 5,
   },
   text: {
     paddingHorizontal: 20,
-    marginTop: 10,
+    marginVertical:20,
   },
   gridbox: {
-    marginTop: 10,
     justifyContent: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -410,16 +443,18 @@ const styles = StyleSheet.create({
   },
   gradientgrid: {
     padding: 2,
-    borderRadius: 21,
+     borderRadius: 30,
     marginHorizontal: 10,
+    // marginVertical:10
+    marginBottom:20
   },
   imageContainer: {
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderRadius: 20,
+    borderRadius: 26,
     backgroundColor: '#fff',
     padding: 10,
-    left: 0,
+    // left: 0,
   },
   imageC: {
     width: 90,
