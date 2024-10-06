@@ -7,8 +7,8 @@ import Footer from "../components/footer";
 const Setting = () => {
     return(
         <View style={styles.container}>
-            <Header/>
-            <Footer />
+            {/* <Header/>
+            <Footer /> */}
         </View>
     )
 }
