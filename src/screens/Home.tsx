@@ -71,7 +71,7 @@ const Home = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const animatedValue = useRef(new Animated.Value(0)).current;
   const dispatch = useDispatch();
-  const [addedToCart, setAddedToCart] = useState<{ [key: string]: boolean }>({});
+  const [addedToCart, setAddedToCart] = useState<{[key: string]: boolean}>({});
 
   const handleAddCart = (Product: any) => {
     if (addedToCart[Product.id]) {
@@ -91,9 +91,9 @@ const Home = () => {
         position: 'top',
         visibilityTime: 4000,
       });
-  
+
       // Set the product as not added
-      setAddedToCart((prev) => ({
+      setAddedToCart(prev => ({
         ...prev,
         [Product.id]: false, // Mark as not added
       }));
@@ -114,9 +114,9 @@ const Home = () => {
         position: 'top',
         visibilityTime: 4000,
       });
-  
+
       // Set the product as added
-      setAddedToCart((prev) => ({
+      setAddedToCart(prev => ({
         ...prev,
         [Product.id]: true, // Mark as added
       }));
@@ -426,40 +426,40 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: '#AB0F1E',
     // paddingHorizontal: 30,
-    width:'70%',
-    alignItems:'center',
+    width: '70%',
+    alignItems: 'center',
     paddingVertical: 10,
     borderRadius: 5,
   },
   text: {
     paddingHorizontal: 20,
-    marginVertical:20,
+    marginVertical: 20,
   },
   gridbox: {
     justifyContent: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 8,
+    gap: 4,
   },
   gradientgrid: {
     padding: 2,
-     borderRadius: 30,
+    borderRadius: 30,
     marginHorizontal: 10,
     // marginVertical:10
-    marginBottom:20
+    marginBottom: 20,
   },
   imageContainer: {
     alignItems: 'center',
     justifyContent: 'space-between',
     borderRadius: 26,
     backgroundColor: '#fff',
-    padding: 10,
+    padding: 5,
     // left: 0,
   },
   imageC: {
     width: 90,
     height: 90,
-    right: 10,
+    right: 8,
     resizeMode: 'contain',
   },
   bottomText: {
